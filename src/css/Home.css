@@ -1,0 +1,36 @@
+.home {
+  display: flex;
+  flex-direction: column;
+}
+
+.Section {
+  padding: 1vw;
+  display: flex;
+  border: 1px solid #aaaaaa;
+}
+
+.Container {
+  border: 1px solid #000000;
+  display: flex;
+  flex: 1;
+  justify-content: space-around;
+}
+
+.S-Header {
+  text-align: center;
+}
+
+.ImageContainer {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.Description {
+  flex: 1;
+}
+
+.Image {
+  object-fit: contain; /* Keep the image's aspect ratio intact */
+}
