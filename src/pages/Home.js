@@ -7,7 +7,7 @@ export default function Home() {
 
       <NavBar />
 
-      <div className="Section">
+      <div className="SectionContainer">
         <div className="Container">
           <div className="Description">
             <h1>Hello, I'm Neal</h1>

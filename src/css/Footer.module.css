@@ -1,0 +1,13 @@
+.Footer {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #000000;
+  min-height: 50vh;
+}
+
+.Container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1; 
+}

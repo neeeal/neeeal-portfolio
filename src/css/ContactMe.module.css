@@ -1,0 +1,19 @@
+.ContactMe {
+  display: flex;
+  flex-direction: column;
+  min-height: 80vh;
+}
+
+.ContentContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1; 
+}
+
+.Container{
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}

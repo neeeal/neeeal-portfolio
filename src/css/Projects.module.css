@@ -1,0 +1,24 @@
+.Projects {
+  display: flex;
+  flex-direction: column;
+  min-height: 80vh;
+}
+
+.HeaderContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ContentContainer {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.Image {
+  object-fit: contain; /* Keep the image's aspect ratio intact */
+  border: 1px solid #000000;
+}
+
