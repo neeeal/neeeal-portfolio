@@ -1,6 +1,7 @@
 .Home {
   display: flex;
   flex-direction: column;
+  background-image: linear-gradient(to right, #0D54BE22, #20ECD322);
 }
 
 .Section {
@@ -9,7 +10,6 @@
 }
 
 .Container {
-  border: 1px solid #000000;
   display: flex;
   flex: 1;
   justify-content: space-around;
