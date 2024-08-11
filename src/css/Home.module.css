@@ -1,10 +1,9 @@
-.home {
+.Home {
   display: flex;
   flex-direction: column;
 }
 
 .Section {
-  padding: 1vw;
   display: flex;
   border: 1px solid #aaaaaa;
 }
@@ -16,8 +15,9 @@
   justify-content: space-around;
 }
 
-.S-Header {
+.Header {
   text-align: center;
+  padding-top: 10vh;
 }
 
 .ImageContainer {

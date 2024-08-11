@@ -1,12 +1,17 @@
+import { Icon } from '@iconify/react';
 import styles from './NavBar.module.css';
+import { Link, animateScroll as scroll } from 'react-scroll';
 
 export default function NavBar() {
   return (
     <div className={styles.NavBar}>
-      <h1>NavBar</h1>
+      <div className={styles.HeaderContainer}>
+      <h1 className={styles.Header}><a onClick={()=> scroll.scrollToTop()}>NavBar</a></h1>
+      </div>
       <div className={styles.Container}>
-        <p>NavBar</p>
-        <p>NavBar</p>
+        <Link to='skills' smooth={true} duration={500} className={styles.Link}>Skills</Link>
+        <Link to='projects' smooth={true} duration={500} className={styles.Projects}><Icon icon='carbon:gears' style={{ fontSize: '24px', color: '#E84949' }} /><span>Projects</span></Link>
+        <Link to='contactMe' smooth={true} duration={500} className={styles.Link}>Contact Me</Link>
       </div>
     </div>
   )
