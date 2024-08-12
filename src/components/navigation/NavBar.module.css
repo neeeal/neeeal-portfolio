@@ -1,19 +1,22 @@
 .NavBar {
     display: flex;
-    max-height: 8vh;
+    min-height: 10vh;
     flex: 1; 
     position: sticky;
     top: 0;
     background-color: white;
-    box-shadow: 0px 1px 3px #352f36;
+    box-shadow: 0px 1px 1px #352f36;
 }
 .HeaderContainer {
     display: flex;
     flex: 4 ; 
+    align-items: center;
 } 
 
 .Header {
-
+    font-size: large;
+    font-weight: bold;
+    padding-left: 1vw;
 }
 
 .Header:hover {
@@ -22,40 +25,55 @@
 
 .Container {
     display: flex;
+    flex-direction: row;
     flex: 2; 
     justify-content: space-around;
     align-items: center;
     padding-right: 5vw;
 } 
 
-.Projects {
-    color: #E84949;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 5px;
-    border-radius: 12px;
-    min-width: 120px;
-}
-
 .Link {
     font-size: medium;
     display: flex; 
     align-items: center;
     justify-content: center;
-    padding: 5px;
+    font-size: medium;
+    padding: 10px 15px; /* Adjusted padding for better spacing */
     border-radius: 12px;
     min-width: 120px;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
 }
 
 .Link:hover {
     cursor: pointer;
     background-color: #E84949;
     color: white;
-  }
+}
+
+.Projects {
+    color: #E84949;
+    background-color: transparent; /* Ensure background is transparent by default */
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: medium;
+    padding: 7px 20px; /* Adjusted padding for better spacing */
+    gap: 5px;
+    border-radius: 12px;
+    min-width: 120px;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+}
 
 .Projects:hover {
     cursor: pointer;
-    color: #E84949;
-    background-color: white;
-  }
+    color: #FFFFFF; /* Change text color to white on hover */
+    background-color: #E84949; /* Inverse background color */
+}
+
+.icon-wrapper {
+    display: inline-block; /* Ensures the wrapper only takes up the necessary space */
+}
+
+.icon-wrapper:hover .carbon-icon {
+    color: white; /* Change the icon color on hover */
+}
