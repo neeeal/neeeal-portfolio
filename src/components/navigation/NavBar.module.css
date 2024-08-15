@@ -1,6 +1,6 @@
 .NavBar {
     display: flex;
-    min-height: 10vh;
+    min-height: 8vh;
     flex: 1; 
     position: sticky;
     top: 0;

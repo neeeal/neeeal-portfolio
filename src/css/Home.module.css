@@ -19,6 +19,7 @@
   flex: 1;
   justify-content: center;
   gap: 100px;
+  min-height: 600px;
 }
 
 .Header {
@@ -28,32 +29,45 @@
   font-size: larger;
 }
 
-.ImageContainer {
-  display: flex;
+.SkillsDescription .ImageContainer {
   flex: 1;
+  display:flex;
   flex-wrap: wrap;
-  align-items: center;
   justify-content: flex-start;
+  align-content: flex-start;
+  gap: 42px;
 }
 
 .Description {
-  display:flex;
+  display: flex;
   flex-direction: column;
   flex: 1;
   justify-content: center;
-  padding-left: 12vw; 
-  gap: 20px;
+  padding-left: 6vw; 
+  gap: 30px;
 }
 
-.HeroImageContainer{
+.Description p {
+  max-width: 550px;
+  margin: 0;  /* Remove any default margins */
+  text-align: justify;  /* Optional: to justify the text */
+  line-height: 25px;
+}
+
+.Description h1 span {
+  font-size: x-large;
+}
+
+.HeroImageContainer , .SkillsImageContainer{
   display: flex; 
   flex: 1;
+  justify-content: center;
 }
 
 .HeroImage {
   padding-top: 5vh;
-  width: 400px;
-  height: 400px;
+  width: 500px;
+  height: 500px;
 }
 
 .SkillsDescription {
@@ -71,20 +85,13 @@
   padding: 1em;
 }
 
-.SkillImage {
-  object-fit: contain; /* Keep the image's aspect ratio intact */
-  padding: 1em; /* Optional: Adds space inside the border around the image */
-  max-width: 64px; 
-  max-height: 64px; 
-}
-
 h1 {
-  font-size: xx-large;
+  font-size:xxx-large;
   color: #343D68;
 }
 
 p {
-  color:#818080;
+  color:#00000099;
 }
 
 .ContactMe {
@@ -101,6 +108,7 @@ p {
   transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
   border: none; /* Remove default border */
   outline: none; /* Remove outline on focus */
+  box-shadow: 0px 1px 1px #352f36;
 }
 
 .ContactMe:hover {
@@ -122,24 +130,26 @@ p {
 .SkillContainer {
   display: inline-flex;
   text-align: center;
-  flex-wrap: wrap;
   flex-direction: column; 
   margin-bottom: 15px;
 }
 
-.SkillImage {
+.SkillContainer img {
   margin: 5px 10px;
   border: 3px solid #0D54BE88; /* Simple border */
   border-radius: 8px; /* Rounded corners */
-  padding: 5px; /* Spacing between image and border */
   transition: transform 0.3s ease; /* Smooth hover effect */
+  object-fit: contain; /* Keep the image's aspect ratio intact */
+  padding: 1em; /* Optional: Adds space inside the border around the image */
+  max-width: 128px; 
+  max-height: 128px; 
 }
 
-.SkillImage:hover {
+.SkillContainer img:hover {
   transform: scale(1.1); /* Slight zoom on hover */
 }
 
-.SkillCaption {
+.SkillContainer label {
   margin-top: 8px;
   font-size: 1rem;
   color: #333;
