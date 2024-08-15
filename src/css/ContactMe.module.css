@@ -2,23 +2,112 @@
   display: flex;
   flex-direction: column;
   min-height: 80vh;
-  padding-top: 12vh;
+  padding: 10vh 0;
 }
 
-.HeaderContainer{
+.HeaderContainer {
   text-align: center;
+  margin-bottom: 24px;
+}
+
+.HeaderContainer h1 {
+  color: #e84949;
+  font-size: x-large;
+  font-weight: normal;
 }
 
 .ContentContainer {
   display: flex;
-  justify-content: center;
+  flex: 2;
+  justify-content: space-around;
   align-items: center;
-  flex: 1; 
+  width: 100%;
+  flex-wrap: wrap; /* Allow wrapping for better responsiveness */
+  gap: 24px;
 }
 
-.Container{
-  display: flex;
+.ImageContainer {
   flex: 1;
+  display: flex;
   justify-content: center;
   align-items: center;
+  max-width: 500px;
+  max-height: 500px;
+  overflow: hidden;
+  margin: 32px;
+}
+
+.ImageContainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.FormContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  max-width: 700px;
+  gap: 32px;
+  padding: 32px;
+  /* border: 1px solid #000; */
+}
+
+.EmailContainer, .MessageContainer, .ButtonContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.EmailContainer input, .MessageContainer textarea {
+  padding: 12px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  box-shadow: 0px 1px 1px #352f3677;
+}
+
+textarea {
+  height: 300px;
+}
+
+.ButtonContainer {
+  align-items: center;
+}
+
+button {
+  display:flex;
+  justify-content: center;
+  gap: 6px;
+  max-width: 200px;
+}
+
+.ButtonContainer button {
+  padding: 12px 24px;
+  background-color: #E84949;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.ButtonContainer button:hover {
+  background-color: #d43b3b;
+}
+
+.ButtonContainer button:active {
+  background-color: #c33434;
+}
+
+/* General Label Styling */
+.ContactMe label {
+  font-size: 16px; /* Adjust as needed */
+  color: #00000099; /* Dark grey color */
+  margin-bottom: 8px; /* Space below the label */
+  display: block; /* Ensures the label is above the input */
+  text-align: left; /* Aligns text to the left */
+  font-weight: 600; /* Makes the label slightly bolder */
+  letter-spacing: 0.5px; /* Adds spacing between letters for readability */
 }

@@ -21,7 +21,7 @@ export default function Home() {
         <div className={styles.Container}>
           <div className={styles.Description}>
             <h1> <span>Hello 👋, I'm a</span><br/>Software Engineer</h1>
-            <p>I'm Neal, a <b>Software Engineer</b> dedicated to making the world a better place one line at a time.</p>
+            <p>I'm Neal, a <b>Software Engineer</b> passionate about leveraging technology to drive innovation and solve real-world problems.</p>
             <Link to="contactMe" smooth={true} duration={500}><span className={styles.ContactMe}>Contact Me</span></Link>
           </div>
           <div className={styles.ImageContainer}>

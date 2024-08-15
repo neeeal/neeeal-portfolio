@@ -3,7 +3,7 @@ import { Icon } from '@iconify/react';
 
 export default function Projects() {
   const projects = [
-    {image:require('../assets/images/skanin.png'), alt:'Skanin App', description:'A Web Application using React with Flask backend and TensorFlow for a Classifer AI.'},
+    {image:require('../assets/images/skanin.png'), alt:'Skanin App', description:'A Web Application using React with Flask backend and TensorFlow for a Rice Stress Classifer AI.'},
     {image:require('../assets/images/soil3 crop.jpg'), alt:'AgroViz App', description:'A Mobile Application using Expo with Flask Backend and Tensorflow for Soil Analysis AI.'},
     {image:require('../assets/images/I7.png'), alt:'Skanin App', description:'The backend of an Attendance System with Salary Computations using Express.js'},
   ];
