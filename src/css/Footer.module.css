@@ -1,11 +1,24 @@
 .Footer {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: space-around;
+  padding-top: 12vh;
   min-height: 50vh;
   background-image: url('../assets/images/bg wave svg.svg'); /* Corrected path with hyphens */
   background-size: cover; /* Ensures the image covers the entire footer */
   background-repeat: no-repeat; /* Prevents the image from repeating */
   background-position: top center; /* Positions the image at the top center */
+}
+
+.Section {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.Footer p {
+  text-align: center;
+  color: white;
 }
 
 .Container {

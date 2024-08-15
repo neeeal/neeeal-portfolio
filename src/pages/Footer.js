@@ -14,30 +14,33 @@ export default function Footer() {
 
   return (
     <div className={styles.Footer}>
-      <div className={styles.Container}>
-        <h2>My social media links:</h2>
-        <div className={styles.SocialsContainer}>
-          <a href="https://www.linkedin.com/in/neeeal" target="_blank" rel="noopener noreferrer">
-            <Icon icon='mdi:linkedin' style={{ fontSize: '48px', color: 'white' }} />
-          </a>
-          <a href="https://x.com/neeealprog" target="_blank" rel="noopener noreferrer">
-            <Icon icon='mdi:twitter' style={{ fontSize: '48px', color: 'white' }} />
-          </a>
-          <span className={styles.Email} onClick={handleCopy}>
-            <Icon icon='mdi:gmail' style={{ fontSize: '48px', color: 'white' }} />
-            {copied && <span className={styles.CopiedMessage}>Copied!</span>}
-          </span>
+      <div className={styles.Section}>
+        <div className={styles.Container}>
+          <h2>My social media links:</h2>
+          <div className={styles.SocialsContainer}>
+            <a href="https://www.linkedin.com/in/neeeal" target="_blank" rel="noopener noreferrer">
+              <Icon icon='mdi:linkedin' style={{ fontSize: '48px', color: 'white' }} />
+            </a>
+            <a href="https://x.com/neeealprog" target="_blank" rel="noopener noreferrer">
+              <Icon icon='mdi:twitter' style={{ fontSize: '48px', color: 'white' }} />
+            </a>
+            <span className={styles.Email} onClick={handleCopy}>
+              <Icon icon='mdi:gmail' style={{ fontSize: '48px', color: 'white' }} />
+              {copied && <span className={styles.CopiedMessage}>Copied!</span>}
+            </span>
+          </div>
+        </div>
+        <div className={styles.Container}>
+          <h2>More projects I’ve worked on</h2>
+          <div className={styles.GithubContainer}>
+            <a href="https://github.com/neeeal" target="_blank" rel="noopener noreferrer">
+              <Icon icon='mdi:github' style={{ fontSize: '48px', color: 'white' }} />
+            </a>
+            <span>@<a href="https://github.com/neeeal" target="_blank" rel="noopener noreferrer">neeeal</a> on GitHub</span>
+          </div>
         </div>
       </div>
-      <div className={styles.Container}>
-        <h2>More projects I’ve worked on</h2>
-        <div className={styles.GithubContainer}>
-          <a href="https://github.com/neeeal" target="_blank" rel="noopener noreferrer">
-            <Icon icon='mdi:github' style={{ fontSize: '48px', color: 'white' }} />
-          </a>
-          <span>@<a href="https://github.com/neeeal" target="_blank" rel="noopener noreferrer">neeeal</a> on GitHub</span>
-        </div>
-      </div>
+      <p>&copy; 2024 Neal Barton James Matira. All rights reserved.</p>
     </div>
   );
 }
