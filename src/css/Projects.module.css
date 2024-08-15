@@ -1,8 +1,11 @@
 .Projects {
   display: flex;
+  flex: 1;
+  justify-content: flex-start;
   flex-direction: column;
-  min-height: 80vh;
-  padding: 12vh;
+  min-height: 800px;
+  padding: 10vh;
+  gap: 24px;
   background-color: #343D68;
 }
 
@@ -10,17 +13,125 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 16px;
+}
+
+.Header {
+  display: flex;
+  flex-direction: row;
+  gap:12px;
+  align-items: center;
+}
+
+.Header h1 {
+  color: white;
+  font-size: x-large;
+  font-weight: normal;
+}
+
+.HeaderContainer p {
+  color: white;
 }
 
 .ContentContainer {
   display: flex;
-  flex: 1;
+  flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
 
-.Image {
-  object-fit: contain; /* Keep the image's aspect ratio intact */
-  border: 1px solid #000000;
+.Card {
+  display: flex;
+  flex-direction: column;
+  max-width: 420px;
+  min-height: 450px;
+  align-items: center;
+  justify-content: flex-start;
+  padding-bottom: 1vh;
+  border: 5px solid; /* Border width */
+  border-image: linear-gradient(-45deg, #0D54BE, #20ECD3) 1;
+  overflow: hidden;
+  background-color: #262C4D;
+  transition: transform 0.3s ease; /* Smooth zoom effect */
 }
 
+.ImageContainer {
+  width: 100%;
+  min-height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Ensures any overflow is hidden */
+}
+
+.Image {
+  width: 100%;
+  height: 300px;;
+  object-fit: cover; /* Crops the image to fit the container while maintaining aspect ratio */
+  opacity: 0.8;
+  transition: opacity 0.3s ease; /* Smooth transition for opacity */
+}
+
+.Card:hover {
+  transform: scale(1.05); /* Slight zoom on hover */
+  opacity: 1.0;
+  border-image: linear-gradient(90deg, #0D54BE, #20ECD3) 1;
+}
+
+.Card:hover .Image {
+  opacity: 1.0;
+  cursor: pointer;
+}
+
+.Card:hover .Description p {
+  color: white;
+}
+
+.Card .Description {
+  width: 100%;
+  align-items: center;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.Description {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.Description div {
+  display: inline-flex;
+  justify-content: center;
+  gap: 4px;
+  padding: 12px;
+  border-radius: 6px;
+  border: 2px solid white;
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+}
+
+.Description div:hover {
+  transform: scale(1.05); /* Slight zoom on hover */
+  cursor: pointer;
+  background-color: #212642;
+}
+
+.Description div:active {
+  cursor: pointer;
+  background-color: #1a1e35;
+}
+
+.Description p {
+  display: inline-flex;
+  flex-wrap: wrap;
+  color: #ffffffc1;
+  text-align: center;
+}
+
+.Description span {
+  color: white;
+}

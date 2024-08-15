@@ -1,9 +1,8 @@
-import { useState } from 'react';
 import styles from '../css/Home.module.css';
 import { Link } from 'react-scroll';
 
 export default function Home() {
-  const [skills, setSkills] = useState([
+  const skills= [
     { image: require("../assets/images/icons8-python-48.png"), caption: 'Python'},
     { image: require("../assets/images/icons8-javascript-48.png"), caption: 'JavaScript'},
     { image: require("../assets/images/icons8-tensorflow-48.png"), caption: 'Tensorflow'},
@@ -15,7 +14,7 @@ export default function Home() {
     { image: require("../assets/images/icons8-react-native-48.png"), caption: 'React.js' },
     { image: require("../assets/images/icons8-expo-48.png"), caption: 'Expo.js' },
     { image: require("../assets/images/icons8-tailwind-css-48.png"), caption: 'Tailwind' },
-  ])
+  ]
   return (
     <div className={styles.Home} >
       <div className={styles.Section}>
@@ -25,8 +24,8 @@ export default function Home() {
             <p>I'm Neal, a <b>Software Engineer</b> dedicated to making the world a better place one line at a time.</p>
             <Link to="contactMe" smooth={true} duration={500}><span className={styles.ContactMe}>Contact Me</span></Link>
           </div>
-          <div className={styles.HeroImageContainer}>
-            <img src={require('../assets/images/91337648.png')} className={styles.HeroImage} alt="Placeholder"/>
+          <div className={styles.ImageContainer}>
+            <img src={require('../assets/images/453561115_1021160509383979_1882114757928198593_n.png')} alt="neeeal"/>
           </div>
         </div>
       </div>
@@ -46,8 +45,8 @@ export default function Home() {
               )}
             </div>
           </div>
-          <div className={styles.SkillsImageContainer}>
-            <img src={require('../assets/images/91337648.png')} alt="Placeholder" className={styles.Image}/>
+          <div className={styles.SkillImageContainer}>
+            <img src={require('../assets/images/StockCake-Coding Workstation Setup_1723712000.jpg')} alt="StockCake-Coding Workstation Setup"/>
           </div>
           </div>
       </div>

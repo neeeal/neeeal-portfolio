@@ -1,13 +1,13 @@
 import styles from './Card.module.css';
 
-export function Card() {
+export function Card({project}) {
   return (
     <div className={styles.Card}>
       <div className={styles.ImageContainer}>
-        <img src="https://via.placeholder.com/500" alt="Placeholder" className={styles.Image} />
+        <img src={require(project.image)} alt={project.alt} className={styles.Image} />
       </div>
       <div className={styles.ContentContainer}>
-        <p className={styles.Description}>Description</p>
+        <p className={styles.Description}>{project.description}</p>
         <button className={styles.Button}>View Details</button>
       </div>
     </div>

@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   background-image: linear-gradient(#0D54BE22, white);
-  padding: 2vw;
+  padding: 2vw 2vw 6vw 2vw;
 }
 
 .Section {
@@ -18,19 +18,19 @@
   display: flex;
   flex: 1;
   justify-content: center;
-  gap: 100px;
+  align-items: center;
+  gap: 128px;
   min-height: 600px;
 }
 
 .Header {
   text-align: center;
-  padding: 12vh 0;
+  padding: 12vh 0 6vh 0;
   color: #E84949;
-  font-size: larger;
+  font-size: x-large;
 }
 
-.SkillsDescription .ImageContainer {
-  flex: 1;
+.Container .SkillsDescription .ImageContainer {
   display:flex;
   flex-wrap: wrap;
   justify-content: flex-start;
@@ -41,9 +41,9 @@
 .Description {
   display: flex;
   flex-direction: column;
-  flex: 1;
+  /* flex: 1; */
   justify-content: center;
-  padding-left: 6vw; 
+  /* padding-left: 6vw;  */
   gap: 30px;
 }
 
@@ -58,16 +58,23 @@
   font-size: x-large;
 }
 
-.HeroImageContainer , .SkillsImageContainer{
+.ImageContainer{
+  display: flex; 
+  justify-content: center;
+  overflow: hidden;
+}
+
+.SkillImageContainer{
   display: flex; 
   flex: 1;
   justify-content: center;
+  overflow: hidden;
 }
 
-.HeroImage {
-  padding-top: 5vh;
-  width: 500px;
-  height: 500px;
+.ImageContainer img, .SkillImageContainer img {
+  object-fit: contain;
+  max-width: 600px;
+  max-height: 600px;
 }
 
 .SkillsDescription {
@@ -75,7 +82,7 @@
   flex-direction: column;
   flex: 1;
   justify-content: flex-start;
-  padding-left: 2vw; 
+  padding-left: 4vw; 
   gap: 20px;
 }
 
