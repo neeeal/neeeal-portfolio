@@ -38,7 +38,7 @@ export default function Home() {
             <p>I have a vast experience in the following technologies:</p>
             <div className={styles.ImageContainer}>
               { skills.map((skill, idx) => 
-                  <div className={styles.SkillContainer} id={idx}>
+                  <div className={styles.SkillContainer} key={idx}>
                     <img src={skill.image} alt={skill.caption + ' logo'}/>
                     <label>{skill.caption}</label>
                   </div>

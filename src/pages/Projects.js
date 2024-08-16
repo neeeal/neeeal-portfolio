@@ -1,12 +1,27 @@
+import React, { useState } from 'react';
 import styles from '../css/Projects.module.css';
 import { Icon } from '@iconify/react';
+import Modal from '../components/modal/Project.js'; // Import the modal component
 
 export default function Projects() {
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const projects = [
-    {image:require('../assets/images/skanin.png'), alt:'Skanin App', description:'A Web Application using React with Flask backend and TensorFlow for a Rice Stress Classifer AI.'},
-    {image:require('../assets/images/soil3 crop.jpg'), alt:'AgroViz App', description:'A Mobile Application using Expo with Flask Backend and Tensorflow for Soil Analysis AI.'},
-    {image:require('../assets/images/I7.png'), alt:'Skanin App', description:'The backend of an Attendance System with Salary Computations using Express.js'},
+    {image: require('../assets/images/skanin.png'), alt: 'Skanin App', description: 'A Web Application using React with Flask backend and TensorFlow for a Rice Stress Classifier AI.'},
+    {previewImage:require('../assets/images/soil3 crop.jpg'), image: require('../assets/images/soil3.jpg'), alt: 'AgroViz App', description: 'A Mobile Application using Expo with Flask Backend and Tensorflow for a robotic Soil Analysis AI.'},
+    {image: require('../assets/images/I7.png'), alt: 'Attendance System', description: 'The backend of an Attendance System with Salary Computations using Express.js'},
   ];
+
+  const openModal = (project) => {
+    setSelectedProject(project);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedProject(null);
+  };
 
   return (
     <div className={styles.Projects} id='projects'>
@@ -22,14 +37,14 @@ export default function Projects() {
       </div>
       <div className={styles.ContentContainer}>
         { 
-          projects.map( (project, idx) =>
-            <div className={styles.Card} id={idx}>
-              <div className={styles.ImageContainer}>
-                <img src={project.image} alt={project.alt} className={styles.Image} />
+          projects.map((project, idx) => (
+            <div className={styles.Card} key={idx}>
+              <div className={styles.ImageContainer} onClick={() => openModal(project)}>
+                <img src={project.previewImage || project.image} alt={project.alt} className={styles.Image} />
               </div>
               <div className={styles.Description}>
                 <p>{project.description}</p>
-                <div>
+                <div onClick={() => openModal(project)}>
                   <span>Learn More</span>
                   <Icon icon='bi:arrow-right' 
                     style={{ 
@@ -38,9 +53,12 @@ export default function Projects() {
                 </div>
               </div>
             </div>
-          )
+          ))
         }
       </div>
+ 
+      {/* Render the modal if a project is selected */}
+      <Modal isOpen={isModalOpen} onClose={closeModal} project={selectedProject} />
     </div>
   );
 }

@@ -1,0 +1,79 @@
+.ModalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    overflow: hidden; /* Prevent scrolling of the background */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth transition for visibility */
+}
+
+.ModalOverlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.ModalContent {
+    background: white;
+    padding: 20px;
+    min-width: 100%;
+    min-height: 100%;
+    overflow-y: auto; /* Enable scrolling for the modal content */
+    position: relative;
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
+    transform: scale(0.9); /* Start position for the transition */
+    transition: transform 0.3s ease; /* Smooth transition for content */
+}
+
+.ModalOverlay.open .ModalContent {
+    transform: scale(1); /* End position for the transition */
+}
+
+.ModalImage {
+    flex: 1;
+}
+
+.ModalImage img {
+    width: 100%;
+    border-radius: 8px;
+    max-height: 80vh; /* Ensure the image doesn't take too much space */
+    object-fit: contain;
+}
+
+.ModalDescription {
+    margin-top: 20px;
+    flex: 1;
+}
+
+.ModalDescription h2 {
+    margin: 0;
+}
+
+.ModalDescription p {
+    margin: 10px 0;
+}
+
+.CloseButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #e84949;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}

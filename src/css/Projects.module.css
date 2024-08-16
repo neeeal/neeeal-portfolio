@@ -69,11 +69,11 @@
   height: 300px;;
   object-fit: cover; /* Crops the image to fit the container while maintaining aspect ratio */
   opacity: 0.8;
-  transition: opacity 0.3s ease; /* Smooth transition for opacity */
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth transition for opacity */
 }
 
 .Card:hover {
-  transform: scale(1.05); /* Slight zoom on hover */
+  transform: scale(0.95); /* Slight zoom on hover */
   opacity: 1.0;
   border-image: linear-gradient(90deg, #0D54BE, #20ECD3) 1;
 }
@@ -81,6 +81,7 @@
 .Card:hover .Image {
   opacity: 1.0;
   cursor: pointer;
+  transform: scale(1.1); /* Slight zoom on hover */
 }
 
 .Card:hover .Description p {
