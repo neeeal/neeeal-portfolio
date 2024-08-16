@@ -8,9 +8,42 @@ export default function Projects() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const projects = [
-    {image: require('../assets/images/skanin.png'), alt: 'Skanin App', description: 'A Web Application using React with Flask backend and TensorFlow for a Rice Stress Classifier AI.'},
-    {previewImage:require('../assets/images/soil3 crop.jpg'), image: require('../assets/images/soil3.jpg'), alt: 'AgroViz App', description: 'A Mobile Application using Expo with Flask Backend and Tensorflow for a robotic Soil Analysis AI.'},
-    {image: require('../assets/images/I7.png'), alt: 'Attendance System', description: 'The backend of an Attendance System with Salary Computations using Express.js'},
+    {image: require('../assets/images/skanin.png'), 
+      alt: 'Skanin App', 
+      title: 'Rice Stress Classification and Recommendation System',
+      description: 
+      `
+      A Web Application using React with Python-Flask backend and TensorFlow for a Rice Stress Classifier AI. 
+      I gathered approximately 1000 images for different rice stresses and used the ResNetV2 architecture 
+      in developing the deep learning model for the project. 
+      `,
+      github: { Frontend: 'https://github.com/neeeal/Frontend-Development-trial', Backend: 'https://github.com/neeeal/softies-backend'},
+      url: 'https://skanin-app.vercel.app/'
+    },
+    {image: require('../assets/images/soil3.jpg'), 
+      alt: 'AgroViz App', 
+      title: 'Robotic Soil Image Analysis with Mobile App',
+      description: 
+      `
+      A Mobile Application using Expo with Flask Backend and Tensorflow for a robotic Soil Analysis AI. I gathered 99 soil images
+      and nutrients for training a Semantic Segmentation Tensorflow model. I used the SegNet architecture as the base model
+      in developing th AI for the project.
+      `,
+      previewImage:require('../assets/images/soil3 crop.jpg'), 
+      github: { Mobile: 'https://github.com/neeeal/robotic-soil-mobile', Backend: 'https://github.com/neeeal/soil-pd-backend'},
+      url: 'https://drive.google.com/file/d/18H1b4pH0kPdMglFGZv010LFoQVSbmMTB/view?usp=sharing'
+    },
+    {image: require('../assets/images/I7.png'), 
+      alt: 'Attendance System', 
+      title: 'Attendance System with Salary Generation',
+      description: 
+      `
+      The backend of an Attendance System with Salary Computations using Express.js. The backend consists of multiple routes and 
+      controllers such as monitoring attendance, employee statistics, and salary computations. This project was developed in part
+      of my Internship program at Intelliseven Technology Solutions.
+      `,
+      github: {}
+    },
   ];
 
   const openModal = (project) => {
@@ -58,7 +91,11 @@ export default function Projects() {
       </div>
  
       {/* Render the modal if a project is selected */}
+      {/* <Modal isOpen={isModalOpen} onClose={closeModal} project={selectedProject} /> */}
+    <div className={`${styles.ModalOverlay} ${isModalOpen ? styles.open : styles.close}`} onClick={closeModal}>
       <Modal isOpen={isModalOpen} onClose={closeModal} project={selectedProject} />
+
+    </div>
     </div>
   );
 }

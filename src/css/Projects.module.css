@@ -130,7 +130,13 @@
   display: inline-flex;
   flex-wrap: wrap;
   color: #ffffffc1;
-  text-align: center;
+  text-align: justify;
+  display: -webkit-box; /* Use this for multi-line truncation */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2; /* Number of lines before truncating */
+  line-clamp: 2;
 }
 
 .Description span {
@@ -179,4 +185,39 @@
   .Description p {
     font-size: smaller;
   }
+}
+
+
+
+/* MODAL */
+/* Modal Overlay */
+.body-no-scroll {
+  overflow: hidden;
+}
+
+.ModalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Darker background for more focus */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  overflow: hidden; /* Prevent scrolling of the background */
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth transition for visibility */
+}
+
+.ModalOverlay.open {
+  width: 100%;
+  visibility: visible;
+}
+
+.ModalOverlay.close {
+  opacity: 0;
+  width: 0%;
+  visibility: hidden;
 }

@@ -1,79 +1,167 @@
-.ModalOverlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-    overflow: hidden; /* Prevent scrolling of the background */
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth transition for visibility */
+/* Modal Overlay */
+.body-no-scroll {
+    overflow: hidden;
 }
 
-.ModalOverlay.open {
-    opacity: 1;
-    visibility: visible;
-}
-
+/* Modal Content */
 .ModalContent {
     background: white;
-    padding: 20px;
-    min-width: 100%;
-    min-height: 100%;
+    border-radius: 10px;
+    width: 50vw; /* Ensure modal isn't too wide */
+    height: 90vh; /* Ensure modal isn't too tall */
     overflow-y: auto; /* Enable scrolling for the modal content */
     position: relative;
     display: flex;
-    flex-direction: row; 
+    flex-direction: column; /* Stack image and description vertically */
     align-items: center;
-    transform: scale(0.9); /* Start position for the transition */
-    transition: transform 0.3s ease; /* Smooth transition for content */
+    transform: scale(0.95); /* Slightly smaller on initial render */
+    transition: transform 0.3s ease; /* Smooth transition for scaling */
+}
+
+.ModalBody {
+    flex: 1;
+    display: flex;
+    flex-direction: column; 
+    padding: 32px;
+}
+
+.ModalHeader {
+    position: sticky;
+    top: 0;
+    display: flex;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    background-color: white;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ModalHeader div {
+    margin: 24px;
+}
+
+.ModalHeader div:hover {
+    cursor: pointer;
+}
+
+.ModalHeader h1 {
+    font-size: x-large;
+    padding: 24px 48px;
 }
 
 .ModalOverlay.open .ModalContent {
-    transform: scale(1); /* End position for the transition */
+    transform: scale(1); /* Full size when visible */
 }
 
-.ModalImage {
-    flex: 1;
-}
-
+/* Image Styling */
 .ModalImage img {
     width: 100%;
     border-radius: 8px;
-    max-height: 80vh; /* Ensure the image doesn't take too much space */
+    max-height: 60vh; /* Ensure the image doesn't take too much space */
     object-fit: contain;
 }
 
+/* Description Styling */
 .ModalDescription {
-    margin-top: 20px;
-    flex: 1;
+    text-align: left; /* Center align text */
 }
 
 .ModalDescription h2 {
     margin: 0;
+    font-size: 1.5em; /* Larger font size for better readability */
 }
 
 .ModalDescription p {
-    margin: 10px 0;
+    margin: 10px 20px;
+    font-size: 1em; /* Ensure the text is readable */
 }
 
-.CloseButton {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: #e84949;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
+/* Footer Styling */
+.ModalFooter {
+    position: sticky;
+    bottom: 0;
     display: flex;
+    box-shadow: 0px -1px 5px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    background-color: white;
+    justify-content: flex-start;
+    padding: 24px 48px;
+    gap: 24px;
     align-items: center;
+}
+
+.GithubContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 24px;
+    min-height: 30px;
+}
+
+.GithubContainer a {
+    text-align: center;
+    display: inline-flex;
+    flex-direction: row;
     justify-content: center;
-    cursor: pointer;
+    align-items: center;
+    gap: 4px;
+    padding: 4px;
+    border-radius: 5px; /* Rounded corners for a smoother look */
+    color: #333; /* Default text color */
+    text-decoration: none; /* Remove underline from links */
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.1s ease; /* Smooth transitions */
+}
+
+.GithubContainer a:hover {
+    background-color: #e1e1e1; /* Lighter background on hover */
+    transform: scale(1.05); /* Slightly enlarge the button on hover */
+}
+
+.GithubContainer a:active {
+    background-color: #d1d1d1; /* Even darker background when active */
+    color: #000; /* Maintain dark text when active */
+    transform: scale(0.95); /* Slightly shrink the button when pressed */
+}
+
+.GithubContainer a:focus {
+    outline: none; /* Remove default focus outline */
+}
+
+.GithubContainer a:visited {
+    color: #555; /* Slightly different color for visited links */
+}
+
+
+.GithubContainer a:hover:after {
+    transform: scaleX(1); /* Expand the line on hover */
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .ModalContent {
+        width: 90vw; /* Increase the modal width for smaller screens */
+        height: 80vh; /* Slightly reduce the height on smaller screens */
+    }
+
+    .ModalHeader h1 {
+        font-size: 1.2em; /* Reduce font size for the modal title */
+        padding: 16px;
+    }
+
+    .ModalBody {
+        padding: 16px; /* Reduce padding for the modal body */
+    }
+
+    .ModalDescription h2 {
+        font-size: 1.2em; /* Reduce font size for better readability */
+    }
+
+    .ModalDescription p {
+        font-size: 0.9em; /* Adjust text size for smaller screens */
+    }
+
+    .ModalFooter {
+        padding: 16px;
+    }
 }

@@ -73,8 +73,8 @@
 
 .ImageContainer img, .SkillImageContainer img {
   object-fit: contain;
-  max-width: 600px;
-  max-height: 600px;
+  max-width: 30vw;
+  max-height: 30vw;
   border-radius: 8px;
 }
 
@@ -167,8 +167,9 @@ p {
 @media (max-width: 768px) {
   /* Tablet and above */
   .Container {
-    flex-direction: row; /* Horizontal layout for larger screens */
+    flex-direction: column; /* Horizontal layout for larger screens */
     gap: 64px;
+    min-height: 200px;
   }
 
   .Description, .SkillsDescription {
@@ -196,18 +197,6 @@ p {
 
   .ContactMe {
     max-width: 200px; /* Larger button width for tablets */
-  }
-
-  .Description {
-    min-width: 40%;
-  }
-
-  .Description h1 span {
-    font-size: large; /* Larger font size for tablets */
-  }
-
-  .Description h1 {
-    font-size: x-large; /* Larger font size for tablets */
   }
 
   p {
