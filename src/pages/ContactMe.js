@@ -5,8 +5,6 @@ import { Icon } from '@iconify/react';
 import emailjs from 'emailjs-com';
 
 export default function ContactMe() {
-  const ENV_VAR = process.env;
-  console.log('yes',process.env.REACT_APP_EMAIL_JS_TEMPLATE);
   const [status, setStatus] = useState(null);
   const [formValue, setFormValue] = useState({
     email: "",
@@ -38,11 +36,6 @@ export default function ContactMe() {
     e.preventDefault();
     const token = refCaptcha.current.getValue();
     setStatus(true);
-
-    const params = {
-      ...formValue,
-      "g-recaptcha-response": token,
-    };
 
     switch (true) {
       case formValue.user_name === "":

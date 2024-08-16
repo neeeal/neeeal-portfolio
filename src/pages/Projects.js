@@ -22,8 +22,8 @@ export default function Projects() {
       </div>
       <div className={styles.ContentContainer}>
         { 
-          projects.map( project =>
-            <div className={styles.Card}>
+          projects.map( (project, idx) =>
+            <div className={styles.Card} id={idx}>
               <div className={styles.ImageContainer}>
                 <img src={project.image} alt={project.alt} className={styles.Image} />
               </div>
