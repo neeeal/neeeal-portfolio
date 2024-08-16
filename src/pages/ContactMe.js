@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, createRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import styles from '../css/ContactMe.module.css';
 import { Icon } from '@iconify/react';
@@ -10,24 +10,23 @@ export default function ContactMe() {
     email: "",
     message: "",
   });
+  const [alertMessage, setAlertMessage] = useState("");
 
-  const refCaptcha = createRef();
+  const refCaptcha = useRef();
   const form = useRef();
 
   useEffect(() => {
     let timeout;
-
-    if (status === true || false) {
-      // Show the info message for 9 seconds
+    if (status === "success" || status === "error") {
       timeout = setTimeout(() => {
-        // setAlertPrompt(null);
-      }, 10000);
+        setAlertMessage("");
+        setStatus(null);
+      }, 9000);
     }
 
     return () => {
       if (timeout) {
         clearTimeout(timeout);
-        setStatus(null);
       }
     };
   }, [status]);
@@ -35,81 +34,36 @@ export default function ContactMe() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const token = refCaptcha.current.getValue();
-    setStatus(true);
 
-    switch (true) {
-      case formValue.user_name === "":
-        setStatus(false);
-        break;
-
-      case formValue.user_email === "":
-        setStatus(false);
-        break;
-
-      case token === undefined:
-        setStatus(false);
-        break;
-
-      default:
-        emailjs
-          .sendForm(
-            process.env.REACT_APP_EMAIL_JS_SERVICE,
-            process.env.REACT_APP_EMAIL_JS_TEMPLATE,
-            form.current,
-            process.env.REACT_APP_EMAIL_JS_USER
-          )
-          .then(
-            (response) => {
-              if (response.status === 200) {
-                // setAlertMessage("Sent successfully");
-                setStatus(false);
-                setFormValue({});
-              }
-              // console.log("SUCCESS!", response.status, response.text);
-              window.location.reload(); // Reload the page after email is sent
-            },
-            (err) => {
-              // setAlertMessage(`Failed: ${err.text}`);
-              setStatus(false);
-              setFormValue({});
-              console.log("FAILED...", err.text);
-            }
-          );
+    if (!formValue.email || !formValue.message || !token) {
+      setStatus("error");
+      setAlertMessage("Please fill out all fields and complete the CAPTCHA.");
+      return;
     }
+
+    emailjs
+      .sendForm(
+        process.env.REACT_APP_EMAIL_JS_SERVICE,
+        process.env.REACT_APP_EMAIL_JS_TEMPLATE,
+        form.current,
+        process.env.REACT_APP_EMAIL_JS_USER
+      )
+      .then(
+        (response) => {
+          if (response.status === 200) {
+            setStatus("success");
+            setAlertMessage("Message sent!");
+            setFormValue({ email: "", message: "" });
+            refCaptcha.current.reset();
+          }
+        },
+        (err) => {
+          setStatus("error");
+          setAlertMessage(`Failed to send message: ${err.text}`);
+          console.log("FAILED...", err.text);
+        }
+      );
   };
-
-  // function sendEmail(e) {
-  //   e.preventDefault();
-
-  //   // Add your own verification logic here if needed before sending the email
-
-  //   emailjs.sendForm('service_5j9ppps', 'template_son98a', e.target, 'lhX5PaAzhfDOwSubz')
-  //   // emailjs.sendForm(process.env.EMAIL_JS_SERVICE, process.env.EMAIL_JS_TEMPLATE, e.target, process.env.EMAIL_JS_USER)
-  //     .then((result) => {
-  //         window.location.reload(); // Reload the page after email is sent
-  //     }, (error) => {
-  //         console.log(error.text);
-  //     });
-  // }
-
-  // const sendEmail = (captchaValue) => {
-  //   const params = {
-
-  //     'g-recaptcha-response': captchaValue,
-  //   };
-
-  //   emailjs.send(
-  //     process.env.EMAIL_JS_SERVICE,
-  //     process.env.EMAIL_JS_TEMPLATE,
-  //     params,
-  //     process.env.EMAIL_JS_USER,
-  //   )
-  //     .then(({ status }) => {
-  //       console.log("EMAILJS SENT", status.code);
-  //     }, (err) => {
-  //       console.log("EMAILJS ERROR", err);
-  //     });
-  // };
 
   return (
     <div className={styles.ContactMe} id="contactMe">
@@ -148,14 +102,14 @@ export default function ContactMe() {
             />
           </div>
 
-          {/* reCAPTCHA widget */}
           <ReCAPTCHA
             sitekey={process.env.REACT_APP_CAPTCHA_SITE_KEY}
             ref={refCaptcha}
             onChange={() => setStatus(null)}
           />
+
           <div className={styles.ButtonContainer}>
-            <button type="submit" onClick={handleSubmit}>
+            <button type="submit">
               Send Message
               <Icon
                 icon="f7:paperplane-fill"
@@ -165,8 +119,10 @@ export default function ContactMe() {
                 }}
               />
             </button>
-
           </div>
+          <div className={styles.AlertMessage}>
+          <p>{alertMessage || ' '}</p>
+        </div>
         </form>
       </div>
     </div>

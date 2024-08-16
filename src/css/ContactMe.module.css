@@ -20,7 +20,6 @@
   display: flex;
   flex: 2;
   justify-content: space-around;
-  align-items: center;
   width: 100%;
   flex-wrap: wrap; /* Allow wrapping for better responsiveness */
   gap: 24px;
@@ -110,6 +109,16 @@ button {
   text-align: left; /* Aligns text to the left */
   font-weight: 600; /* Makes the label slightly bolder */
   letter-spacing: 0.5px; /* Adds spacing between letters for readability */
+}
+
+.AlertMessage {
+  color: red;
+  font-size: 16px;
+  margin-top: 10px;
+  min-height: 40px; /* Ensures the alert message div always has a minimum height */
+  display: flex;
+  align-items: center; /* Vertically center the text */
+  justify-content: center; /* Horizontally center the text */
 }
 
 /* Media Queries */
