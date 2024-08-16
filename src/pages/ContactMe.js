@@ -1,28 +1,122 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect, createRef } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
 import styles from '../css/ContactMe.module.css';
 import { Icon } from '@iconify/react';
 import emailjs from 'emailjs-com';
 
 export default function ContactMe() {
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
+  const ENV_VAR = process.env;
+  console.log('yes',process.env.REACT_APP_EMAIL_JS_TEMPLATE);
+  const [status, setStatus] = useState(null);
+  const [formValue, setFormValue] = useState({
+    email: "",
+    message: "",
+  });
 
-  const handleSubmit = () => {
-    console.log(email, message);
+  const refCaptcha = createRef();
+  const form = useRef();
+
+  useEffect(() => {
+    let timeout;
+
+    if (status === true || false) {
+      // Show the info message for 9 seconds
+      timeout = setTimeout(() => {
+        // setAlertPrompt(null);
+      }, 10000);
+    }
+
+    return () => {
+      if (timeout) {
+        clearTimeout(timeout);
+        setStatus(null);
+      }
+    };
+  }, [status]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const token = refCaptcha.current.getValue();
+    setStatus(true);
+
+    const params = {
+      ...formValue,
+      "g-recaptcha-response": token,
+    };
+
+    switch (true) {
+      case formValue.user_name === "":
+        setStatus(false);
+        break;
+
+      case formValue.user_email === "":
+        setStatus(false);
+        break;
+
+      case token === undefined:
+        setStatus(false);
+        break;
+
+      default:
+        emailjs
+          .sendForm(
+            process.env.REACT_APP_EMAIL_JS_SERVICE,
+            process.env.REACT_APP_EMAIL_JS_TEMPLATE,
+            form.current,
+            process.env.REACT_APP_EMAIL_JS_USER
+          )
+          .then(
+            (response) => {
+              if (response.status === 200) {
+                // setAlertMessage("Sent successfully");
+                setStatus(false);
+                setFormValue({});
+              }
+              // console.log("SUCCESS!", response.status, response.text);
+              window.location.reload(); // Reload the page after email is sent
+            },
+            (err) => {
+              // setAlertMessage(`Failed: ${err.text}`);
+              setStatus(false);
+              setFormValue({});
+              console.log("FAILED...", err.text);
+            }
+          );
+    }
   };
 
-  function sendEmail(e) {
-    e.preventDefault();
+  // function sendEmail(e) {
+  //   e.preventDefault();
 
-    // Add your own verification logic here if needed before sending the email
+  //   // Add your own verification logic here if needed before sending the email
 
-    emailjs.sendForm('service_5j9ppps', 'template_p239xlq', e.target, 'lhX5PaAzhfDOwSubz')
-      .then((result) => {
-          window.location.reload(); // Reload the page after email is sent
-      }, (error) => {
-          console.log(error.text);
-      });
-  }
+  //   emailjs.sendForm('service_5j9ppps', 'template_son98a', e.target, 'lhX5PaAzhfDOwSubz')
+  //   // emailjs.sendForm(process.env.EMAIL_JS_SERVICE, process.env.EMAIL_JS_TEMPLATE, e.target, process.env.EMAIL_JS_USER)
+  //     .then((result) => {
+  //         window.location.reload(); // Reload the page after email is sent
+  //     }, (error) => {
+  //         console.log(error.text);
+  //     });
+  // }
+
+  // const sendEmail = (captchaValue) => {
+  //   const params = {
+
+  //     'g-recaptcha-response': captchaValue,
+  //   };
+
+  //   emailjs.send(
+  //     process.env.EMAIL_JS_SERVICE,
+  //     process.env.EMAIL_JS_TEMPLATE,
+  //     params,
+  //     process.env.EMAIL_JS_USER,
+  //   )
+  //     .then(({ status }) => {
+  //       console.log("EMAILJS SENT", status.code);
+  //     }, (err) => {
+  //       console.log("EMAILJS ERROR", err);
+  //     });
+  // };
 
   return (
     <div className={styles.ContactMe} id="contactMe">
@@ -36,7 +130,7 @@ export default function ContactMe() {
             alt="Magnifying Digital Details"
           />
         </div>
-        <form action="#" method="post" className={styles.FormContainer} onSubmit={sendEmail}>
+        <form action="#" method="POST" ref={form} className={styles.FormContainer} onSubmit={handleSubmit}>
           <div className={styles.EmailContainer}>
             <label htmlFor="email">Email Address:</label>
             <input
@@ -44,8 +138,8 @@ export default function ContactMe() {
               id="email"
               name="from_email"
               placeholder="Enter your email..."
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={formValue.email}
+              onChange={(e) => setFormValue({ ...formValue, email: e.target.value })}
               required
             />
           </div>
@@ -55,15 +149,18 @@ export default function ContactMe() {
               id="message"
               name="message"
               placeholder="Enter your message..."
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
+              value={formValue.message}
+              onChange={(e) => setFormValue({ ...formValue, message: e.target.value })}
               required
             />
           </div>
 
           {/* reCAPTCHA widget */}
-          <div className="g-recaptcha" data-sitekey="6Leh8ScqAAAAAObBhYWe-KprEF5TMTOVJfPxi7Jm"></div>
-
+          <ReCAPTCHA
+            sitekey={process.env.REACT_APP_CAPTCHA_SITE_KEY}
+            ref={refCaptcha}
+            onChange={() => setStatus(null)}
+          />
           <div className={styles.ButtonContainer}>
             <button type="submit" onClick={handleSubmit}>
               Send Message
@@ -75,6 +172,7 @@ export default function ContactMe() {
                 }}
               />
             </button>
+
           </div>
         </form>
       </div>
