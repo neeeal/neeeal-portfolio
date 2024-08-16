@@ -1,17 +1,18 @@
 .NavBar {
     display: flex;
     min-height: 64px;
-    flex: 1; 
+    flex: 1;
     position: sticky;
     top: 0;
     background-color: white;
     box-shadow: 0px 1px 1px #352f36;
-    z-index: 1000; /* Ensure it's on top */
-    opacity: 1.0; /* Full opacity */
+    z-index: 1000;
+    opacity: 1.0;
 }
+
 .HeaderContainer {
     display: flex;
-    flex: 4 ; 
+    flex: 4;
     align-items: center;
 } 
 
@@ -28,22 +29,21 @@
 .Container {
     display: flex;
     flex-direction: row;
-    flex: 2; 
+    flex: 2;
     justify-content: space-around;
     align-items: center;
     padding-right: 5vw;
-} 
+}
 
 .Link {
     font-size: medium;
-    display: flex; 
+    display: flex;
     align-items: center;
     justify-content: center;
-    font-size: medium;
-    padding: 10px 15px; /* Adjusted padding for better spacing */
+    padding: 10px 15px;
     border-radius: 12px;
     min-width: 120px;
-    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .Link:hover {
@@ -54,28 +54,59 @@
 
 .Projects {
     color: #E84949;
-    background-color: transparent; /* Ensure background is transparent by default */
+    background-color: transparent;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    font-size: medium;
-    padding: 7px 20px; /* Adjusted padding for better spacing */
+    padding: 7px 20px;
     gap: 5px;
     border-radius: 12px;
     min-width: 120px;
-    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .Projects:hover {
     cursor: pointer;
-    color: #FFFFFF; /* Change text color to white on hover */
-    background-color: #E84949; /* Inverse background color */
+    color: #FFFFFF;
+    background-color: #E84949;
 }
 
 .icon-wrapper {
-    display: inline-block; /* Ensures the wrapper only takes up the necessary space */
+    display: inline-block;
 }
 
 .icon-wrapper:hover .carbon-icon {
-    color: white; /* Change the icon color on hover */
+    color: white;
+}
+
+/* Media query for mobile portrait */
+@media (max-width: 768px) {
+    .NavBar {
+        /* flex-direction: column; */
+        align-items: center;
+        padding: 10px 0;
+    }
+
+    .HeaderContainer {
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 10px;
+        flex: 1;
+    }
+
+    .Container {
+        /* flex-direction: column; */
+        flex: 3;
+        justify-content: center;
+        align-items: center;
+        padding-right: 0;
+    }
+
+    .Link, .Projects {
+        font-size: smaller;
+        min-width: auto;
+        width: 100%;
+        text-align: center;
+        padding: 8px 0;
+    }
 }

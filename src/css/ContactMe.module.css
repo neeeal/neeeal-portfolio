@@ -111,3 +111,39 @@ button {
   font-weight: 600; /* Makes the label slightly bolder */
   letter-spacing: 0.5px; /* Adds spacing between letters for readability */
 }
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .ContentContainer {
+    flex-direction: column; /* Stack content vertically on smaller screens */
+    align-items: center; /* Center align on smaller screens */
+  }
+
+  .ImageContainer {
+    max-width: 100%; /* Allow full width for the image container */
+    margin-bottom: 16px; /* Adjust margin for smaller screens */
+  }
+
+  .FormContainer {
+    width: 100%; /* Allow full width for the form container */
+    padding: 16px; /* Reduce padding for smaller screens */
+  }
+
+  .HeaderContainer h1 {
+    font-size: large; /* Adjust font size for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .ContentContainer {
+    gap: 16px; /* Reduced gap for smaller screens */
+  }
+
+  .FormContainer {
+    gap: 16px; /* Reduced gap for form fields */
+  }
+
+  .HeaderContainer h1 {
+    font-size: medium; /* Further reduce font size for very small screens */
+  }
+}

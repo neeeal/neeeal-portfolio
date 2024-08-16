@@ -5,47 +5,50 @@
   padding-top: 12vh;
   min-height: 50vh;
   background-image: url('../assets/images/bg wave svg.svg'); /* Corrected path with hyphens */
-  background-size: cover; /* Ensures the image covers the entire footer */
-  background-repeat: no-repeat; /* Prevents the image from repeating */
-  background-position: top center; /* Positions the image at the top center */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
 }
 
 .Section {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
+  flex-wrap: wrap; /* Allows items to wrap on smaller screens */
+  gap: 24px; /* Adds space between containers */
 }
 
 .Footer p {
   text-align: center;
   color: white;
+  margin-top: 24px; /* Adds space above the footer text */
 }
 
 .Container {
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   justify-content: center;
-  align-items:flex-start;
+  align-items: flex-start;
   padding-left: 12vw;
-  flex: 1;  
-  gap: 32px; 
+  flex: 1;
+  gap: 32px;
 }
 
 h2 {
   color: white;
   font-weight: normal;
-  font-size: medium;  
+  font-size: medium;
   text-align: left;
 }
 
-.SocialsContainer{
+.SocialsContainer {
   display: flex;
   flex-direction: row;
   justify-content: center;
   gap: 64px;
 }
 
-.GithubContainer{
+.GithubContainer {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -61,7 +64,8 @@ h2 {
   color: #0ACBBF;
 }
 
-.GithubContainer span a:hover, .Email:hover {
+.GithubContainer span a:hover,
+.Email:hover {
   cursor: pointer;
 }
 
@@ -69,7 +73,7 @@ h2 {
   cursor: pointer;
 }
 
-.SocialsContainer img{
+.SocialsContainer img {
   object-fit: contain;
 }
 
@@ -88,4 +92,71 @@ h2 {
   border-radius: 4px;
   font-size: 14px;
   white-space: nowrap;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .Section {
+    flex-direction: column; /* Stack sections vertically on tablets */
+    align-items: center; /* Center align the sections */
+    padding-left: 0; /* Remove left padding on smaller screens */
+    gap: 48px; /* Increase the gap between sections */
+  }
+
+  .Container {
+    padding-left: 5vw; /* Reduce padding for smaller screens */
+    align-items: center; /* Center align content on smaller screens */
+  }
+
+  h2 {
+    text-align: center; /* Center align headings */
+    font-size: large; /* Adjust font size for smaller screens */
+  }
+
+  .SocialsContainer {
+    gap: 32px; /* Reduce gap for social icons */
+  }
+
+  .GithubContainer {
+    gap: 8px; /* Reduce gap for GitHub section */
+  }
+
+  .GithubContainer span a {
+    font-size: 14px; /* Reduce font size for GitHub link */
+  }
+}
+
+@media (max-width: 480px) {
+  .Footer {
+    padding-top: 8vh; /* Reduce top padding on very small screens */
+    min-height: 40vh; /* Adjust min height for small screens */
+  }
+
+  h2 {
+    font-size: medium; /* Further reduce heading size */
+  }
+
+  .Container {
+    padding-left: 3vw; /* Further reduce padding */
+  }
+
+  .SocialsContainer {
+    flex-direction: column; /* Stack social icons vertically on small screens */
+    gap: 24px; /* Reduce gap between icons */
+  }
+
+  .GithubContainer {
+    flex-direction: column; /* Stack GitHub section vertically */
+    gap: 8px; /* Further reduce gap */
+    align-items: center; /* Center align GitHub section */
+  }
+
+  .GithubContainer span a {
+    font-size: 12px; /* Further reduce font size for GitHub link */
+  }
+
+  .CopiedMessage {
+    font-size: 12px; /* Adjust font size for copied message */
+    bottom: -16px; /* Adjust position */
+  }
 }
