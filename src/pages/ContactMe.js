@@ -1,25 +1,28 @@
 import { useState } from 'react';
 import styles from '../css/ContactMe.module.css';
 import { Icon } from '@iconify/react';
+import emailjs from 'emailjs-com';
 
 export default function ContactMe() {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
 
   const handleSubmit = () => {
-    console.log(email, message)
+    console.log(email, message);
+  };
+
+  function sendEmail(e) {
+    e.preventDefault();
+
+    // Add your own verification logic here if needed before sending the email
+
+    emailjs.sendForm('service_5j9ppps', 'template_p239xlq', e.target, 'lhX5PaAzhfDOwSubz')
+      .then((result) => {
+          window.location.reload(); // Reload the page after email is sent
+      }, (error) => {
+          console.log(error.text);
+      });
   }
-
-  // function sendEmail(e) {
-  //   e.preventDefault();    //This is important, i'm not sure why, but the email won't send without it
-
-  //   emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', e.target, 'YOUR_USER_ID')
-  //     .then((result) => {
-  //         window.location.reload()  //This is if you still want the page to reload (since e.preventDefault() cancelled that behavior) 
-  //     }, (error) => {
-  //         console.log(error.text);
-  //     });
-  // }
 
   return (
     <div className={styles.ContactMe} id="contactMe">
@@ -33,13 +36,13 @@ export default function ContactMe() {
             alt="Magnifying Digital Details"
           />
         </div>
-        <form action="#" method="post" className={styles.FormContainer}>
+        <form action="#" method="post" className={styles.FormContainer} onSubmit={sendEmail}>
           <div className={styles.EmailContainer}>
             <label htmlFor="email">Email Address:</label>
             <input
               type="email"
               id="email"
-              name="email"
+              name="from_email"
               placeholder="Enter your email..."
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -57,6 +60,10 @@ export default function ContactMe() {
               required
             />
           </div>
+
+          {/* reCAPTCHA widget */}
+          <div className="g-recaptcha" data-sitekey="6Leh8ScqAAAAAObBhYWe-KprEF5TMTOVJfPxi7Jm"></div>
+
           <div className={styles.ButtonContainer}>
             <button type="submit" onClick={handleSubmit}>
               Send Message
