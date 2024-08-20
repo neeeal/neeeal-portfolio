@@ -13,8 +13,8 @@ export default function Footer() {
   };
 
   return (
-    <div className={styles.Footer}>
-      <div className={styles.Section}>
+    <section className={styles.Footer}>
+      <div className={styles.Content}>
         <div className={styles.Container}>
           <h2>My social media links:</h2>
           <div className={styles.SocialsContainer}>
@@ -41,6 +41,6 @@ export default function Footer() {
         </div>
       </div>
       <p>&copy; 2024 Neal Barton James Matira. All rights reserved.</p>
-    </div>
+    </section>
   );
 }

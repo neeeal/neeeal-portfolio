@@ -16,8 +16,8 @@ export default function Home() {
     { image: require("../assets/images/icons8-tailwind-css-48.png"), caption: 'Tailwind' },
   ]
   return (
-    <div className={styles.Home} >
-      <div className={styles.Section}>
+    <section className={styles.Home} >
+      <div className={styles.Content}>
         <div className={styles.Container}>
           <div className={styles.Description}>
             <h1> <span>Hello 👋, I'm a</span><br/>Software Engineer</h1>
@@ -32,7 +32,7 @@ export default function Home() {
 
       <h2 className={styles.Header} id='skills'>Skills</h2>
 
-      <div className={styles.Section}>
+      <div className={styles.Content}>
         <div className={styles.Container}>
           <div className={styles.SkillsDescription}>
             <p>I have a vast experience in the following technologies:</p>
@@ -51,6 +51,6 @@ export default function Home() {
           </div>
       </div>
 
-    </div>
+    </section>
   );
 }

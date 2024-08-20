@@ -6,7 +6,7 @@ import { Link, animateScroll as scroll } from 'react-scroll';
 export default function NavBar() {
   const [ isHovered, setIsHovered ] = useState(false);
   return (
-    <div className={styles.NavBar}>
+    <nav className={styles.NavBar}>
       <div className={styles.HeaderContainer}>
         <h1 className={styles.Header}><span onClick={()=> scroll.scrollToTop()}>neeeal</span></h1>
       </div>
@@ -23,6 +23,6 @@ export default function NavBar() {
           </Link>
         <Link to='contactMe' smooth={true} duration={900} className={styles.Link}>Contact Me</Link>
       </div>
-    </div>
+    </nav>
   )
 }

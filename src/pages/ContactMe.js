@@ -66,7 +66,7 @@ export default function ContactMe() {
   };
 
   return (
-    <div className={styles.ContactMe} id="contactMe">
+    <section className={styles.ContactMe} id="contactMe">
       <div className={styles.HeaderContainer}>
         <h1>Contact Me</h1>
       </div>
@@ -125,6 +125,6 @@ export default function ContactMe() {
         </div>
         </form>
       </div>
-    </div>
+    </section>
   );
 }
