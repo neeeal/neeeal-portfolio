@@ -57,7 +57,7 @@ export default function Projects() {
   };
 
   return (
-    <div className={styles.Projects} id='projects'>
+    <section className={styles.Projects} id='projects'>
       <div className={styles.HeaderContainer}>
         <div className={styles.Header}>
           <Icon icon='carbon:gears' 
@@ -96,6 +96,6 @@ export default function Projects() {
       <Modal isOpen={isModalOpen} onClose={closeModal} project={selectedProject} />
 
     </div>
-    </div>
+    </section>
   );
 }
