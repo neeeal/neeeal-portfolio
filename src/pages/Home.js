@@ -30,7 +30,7 @@ export default function Home() {
         </div>
       </div>
 
-      <h2 className={styles.Header} id='skills'>Skills</h2>
+      {/* <h2 className={styles.Header} id='skills'>Skills</h2>
 
       <div className={styles.Content}>
         <div className={styles.Container}>
@@ -49,7 +49,7 @@ export default function Home() {
             <img src={require('../assets/images/StockCake-Coding Workstation Setup_1723712000.jpg')} alt="StockCake-Coding Workstation Setup"/>
           </div>
           </div>
-      </div>
+      </div> */}
 
     </section>
   );
